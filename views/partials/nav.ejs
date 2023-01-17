@@ -4,12 +4,18 @@
 </head>
 <body>
   <nav>
-    <i class="fa-solid fa-record-vinyl"></i>
+    <i class="fas fa-solid fa-record-vinyl"></i>
     <a 
-    href="/albums/new" <%- title === 'Add an album review' ? 'class="active"': "" %> 
+    href="/albums/new" <%- title === 'New Review' ? 'class="active"': "" %> 
     >
     Add Review
   </a>
+
+    <a 
+    href="/albums/allreviews" <%- title === "All Reviews" ? 'class="active"' : ""  %> 
+    >
+    All Reviews
+    </a>
     <% if (user) { %>
       <a href="/auth/logout" class="right">
         <button type="submit">Logout</button>
