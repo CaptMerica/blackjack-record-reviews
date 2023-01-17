@@ -1,17 +1,18 @@
 <%- include('../partials/html-head') %>
-<link rel="stylesheet" href="/stylesheets/albums/new.css" />
+<link rel="stylesheet" href="stylesheets/albums/new.css" />
 <%- include('../partials/nav') %>
 
 
 <main>
   <h1><%= title %></h1>
-  <form id="new-form" action="" method="">
+  <form 
+    id="new-form" action="" method="">
     <label for="title-input">Title:</label>
     <input type="text" name="title" id="title-input">
     <label for="release-year-input">Release Year:</label>
     <input type="text" name="releaseYear" id="release-year-input">
-    <label for="mpaa-rating-select">MPAA Rating:</label>
-    <select name="mpaaRating" id="mpaa-rating-select">
+    <label for="album-rating-select">:</label>
+    <select name="albumRating" id="album-rating-select">
       <option value="G">G</option>
       <option value="PG">PG</option>
       <option value="PG-13">PG-13</option>
@@ -21,7 +22,7 @@
     <input type="text" name="cast" id="cast-input">
     <label for="now-showing-checkbox">Now Showing:</label>
     <input type="checkbox" name="nowShowing" id="now-showing-checkbox" checked>
-    <button type="submit">Add Movie</button>
+    <button type="submit">Upload Review</button>
   </form>
 </main>
 

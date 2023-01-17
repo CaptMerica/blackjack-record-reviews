@@ -11,6 +11,31 @@
       />
     </div>
   <% } %>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Release Year</th>
+        <th>Rating</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%# Oh hey, this is an ejs comment! It starts with a # %>
+      <%# Write the line of EJS to iterate over movies using forEach %>
+        <tr>
+          <td><%= movie.title %></td>
+          <td><%= movie.releaseYear %></td>
+          <td><%= movie.mpaaRating %></td>
+          <td><%= movie.cast.join(', ') %></td>
+          <%# finish the ternary expression to display 'Yes' or 'Nope' %> 
+          <td><%= movie.nowShowing ?  %></td>
+        </tr>
+      <%# Close the forEach using EJS here %>
+    </tbody>
+  </table>
 </main>
 
 <%- include('./partials/footer') %>
