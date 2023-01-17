@@ -6,8 +6,9 @@
   <nav>
     <i class="fa-solid fa-record-vinyl"></i>
     <a 
-    href="/albums/new" <%- title === 'Add ' %> 
+    href="/albums/new" <%- title === 'Add an album review' ? 'class="active"': "" %> 
     >
+    Add Review
   </a>
     <% if (user) { %>
       <a href="/auth/logout" class="right">
