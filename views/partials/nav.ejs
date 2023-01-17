@@ -4,6 +4,11 @@
 </head>
 <body>
   <nav>
+    <i class="fa-solid fa-record-vinyl"></i>
+    <a 
+    href="/albums/new" <%- title === 'Add ' %> 
+    >
+  </a>
     <% if (user) { %>
       <a href="/auth/logout" class="right">
         <button type="submit">Logout</button>
