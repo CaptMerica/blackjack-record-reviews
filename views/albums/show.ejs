@@ -3,9 +3,7 @@
 <%- include('../partials/nav') %>
 <main>
   <div>
-    <% albums.forEach (album => { %>
-  <a href="/albums/<%= album._id %> "><%= album.name %> </a>
-  <% }) %> 
+  <%= album.name %> 
   </div>
 </main>
 <%- include("../partials/footer") %>

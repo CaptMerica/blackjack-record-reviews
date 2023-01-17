@@ -28,8 +28,22 @@ function create (req, res) {
   })
 }
 
+
+function show (req, res) {
+  Album.findById(req.params.albumid)
+  .then (album => {
+    res.render ("albums/show", {album, title: album.name})
+  })
+  .catch (err => {
+    console.log(err);
+    res.redirect("/")
+  })
+}
+
+
 export {
   index,
   newAlbum as new,
-  create
+  create,
+  show
 }

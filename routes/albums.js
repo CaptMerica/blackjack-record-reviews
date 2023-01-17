@@ -8,6 +8,7 @@ router.get("/", albumsCtrl.index)
 // GET localhost:3000/albums
 router.get('/new', albumsCtrl.new)
 router.post("/", albumsCtrl.create)
+router.get("/:albumid", albumsCtrl.show)
 
 export {
   router
