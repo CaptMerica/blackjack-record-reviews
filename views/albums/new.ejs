@@ -6,19 +6,11 @@
 <main>
   <h1><%= title %></h1>
   <form 
-    id="new-form" action="" method="">
+    id="new-form" action="/albums" method="POST">
     <label for="title-input">Title:</label>
-    <input type="text" name="title" id="title-input">
+    <input type="text" name="name" id="title-input">
     <label for="release-year-input">Release Year:</label>
     <input type="text" name="releaseYear" id="release-year-input">
-    <label for="album-rating-select">Rating:</label>
-    <select name="albumRating" id="album-rating-select">
-      <option value="1-star">1 Star</option>
-      <option value="2-stars">2 Stars</option>
-      <option value="3-stars">3 Stars</option>
-      <option value="4-stars">4 Stars</option>
-      <option value="5-stars">5 Stars</option>
-    </select>
     <button type="submit">Upload Review</button>
   </form>
 </main>
