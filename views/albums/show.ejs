@@ -19,6 +19,13 @@
       <h2>Comments</h2>
       <% if (user) { %>
         <h3>Add a comment</h3>
+        <ul>
+          <% album.comments?.forEach(comment => { %>
+            <li>
+              <%= comment.content %> - <%= comment.commenter.name %>
+            </li> 
+          <% }) %>
+        </ul>
         <form action="/albums/<%= album._id %>/comments" method="POST">
           <textarea name="content"></textarea><br>
           <button>Add Comment</button>

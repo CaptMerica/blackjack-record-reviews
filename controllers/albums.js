@@ -23,7 +23,6 @@ function newAlbum (req, res) {
 }
 
 function create (req, res) {
-  console.log(req.user.profile._id);
   req.body.owner = req.user.profile._id
   Album.create (req.body)
   .then (album => {
@@ -64,7 +63,7 @@ function edit (req, res) {
   })
   .catch (err => {
     console.log(err);
-    res.redirect("/")
+    res.redirect("/albums")
   })
 }
 
@@ -92,7 +91,7 @@ function deleteAlbum(req, res) {
     if (album.owner.equals(req.user.profile._id)) {
       album.delete()
       .then(()=> {
-        res.redirect(`/albums/${album._id}`)
+        res.redirect(`/albums}`)
       })
     } else {
       throw new Error('🚫 Not authorized 🚫')
