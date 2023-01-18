@@ -56,7 +56,7 @@ function show (req, res) {
 function edit (req, res) {
   Album.findById(req.params.id)
   .then(album => {
-    res.render("albums/edit", {
+    res.render("albums/show", {
       album,
       title: "edit review"
     })
