@@ -45,5 +45,5 @@ export {
   index,
   newAlbum as new,
   create,
-  show
+  show,
 }

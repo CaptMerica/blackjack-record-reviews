@@ -3,7 +3,19 @@
 <%- include('../partials/nav') %>
 <main>
   <div>
-  <%= album.name %> 
+  <%= album.name %>
+  <section>
+    <% if (user) { %>
+      <form 
+        action="/tacos/<%= taco._id %>/flip-tasty?_method=PATCH" 
+        method="POST"
+      >
+        <button class="btn" type="submit">
+          Make taco <%= taco.tasty ? 'not tasty 🌮🥺' : 'tasty 🌮🎉' %>
+        </button>
+      </form>
+    <% } %>
+  </section>
   </div>
 </main>
 <%- include("../partials/footer") %>
