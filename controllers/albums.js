@@ -23,6 +23,7 @@ function newAlbum (req, res) {
 }
 
 function create (req, res) {
+  console.log(req.user.profile._id);
   req.body.owner = req.user.profile._id
   Album.create (req.body)
   .then (album => {
@@ -37,19 +38,25 @@ function create (req, res) {
 
 function show (req, res) {
   Album.findById(req.params.albumid)
-  .populate("owner")
+  .populate([
+    {path: "owner"},
+    {path: "comments.commenter"}
+  ])
   .then (album => {
-    res.render ("albums/show", {album, title: album.name})
+    res.render ("albums/show", {
+      album, 
+      title: album.name
+    })
   })
   .catch (err => {
     console.log(err);
     res.redirect("/")
-  })
+    })
 }
 
 function edit (req, res) {
   Album.findById(req.params.id)
-  .then(taco => {
+  .then(album => {
     res.render("albums/edit", {
       album,
       title: "edit review"

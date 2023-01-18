@@ -7,15 +7,14 @@
   <section>
     <% if (user) { %>
       <form>
-        <% if (album.owner.equals(user?.profile._id)) { %> 
+        <% if (album.owner?.equals(user?.profile._id)) { %> 
         <a href="/albums/<%= album._id %>/edit">
-          <button class="btn">Edit Review 🚧</button>
+          <button class="btn">Edit Review</button>
         </a>
-        <% } %> 
-        
         <form action="/albums/<%= album._id %>?_method=DELETE" method="POST">
           <button class="btn" type="submit">Delete Review</button>
         </form>
+        <% } %> 
       </form>
       <h2>Comments</h2>
       <% if (user) { %>
