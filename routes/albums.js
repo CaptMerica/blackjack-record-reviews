@@ -5,10 +5,12 @@ const router = Router()
 
 
 router.get("/", albumsCtrl.index)
-// GET localhost:3000/albums
 router.get('/new', albumsCtrl.new)
 router.post("/", albumsCtrl.create)
 router.get("/:albumid", albumsCtrl.show)
+router.get("/:albumid/edit", albumsCtrl.edit)
+router.put("/:albumid", albumsCtrl.update)
+router.delete("/:albumid", albumsCtrl.delete)
 
 export {
   router

@@ -4,18 +4,14 @@
 <main>
   <div>
   <%= album.name %>
-  <section>
-    <% if (user) { %>
-      <form 
-        action="/tacos/<%= taco._id %>/flip-tasty?_method=PATCH" 
-        method="POST"
-      >
-        <button class="btn" type="submit">
-          Make taco <%= taco.tasty ? 'not tasty 🌮🥺' : 'tasty 🌮🎉' %>
-        </button>
-      </form>
-    <% } %>
-  </section>
+  <% if (album.owner.equals(user?.profile._id)) { %>
+    <a href="/album/<%= album._id %>/edit">
+      <button class="btn">Edit this Review</button>
+    </a>
+    <form action="/albums/<%= album._id %>?_method=DELETE" method="POST">
+      <button class="btn" type="submit">Delete Review💀</button>
+    </form>
+  <% } %>
   </div>
 </main>
 <%- include("../partials/footer") %>

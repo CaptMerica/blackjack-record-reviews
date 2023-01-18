@@ -40,10 +40,62 @@ function show (req, res) {
   })
 }
 
+function edit (req, res) {
+  Album.findById(req.params.id)
+  .then(taco => {
+    res.render("albums/edit", {
+      album,
+      title: "edit review"
+    })
+  })
+  .catch (err => {
+    console.log(err);
+    res.redirect("/")
+  })
+}
+
+function update(req, res) {
+  Album.findById(req.params.id)
+  .then(album => {
+    if (album.owner.equals(req.user.profile._id)) {
+      album.updateOne(req.body)
+      .then(()=> {
+        res.redirect(`/albums/${album._id}`)
+      })
+    } else {
+      throw new Error('🚫 Not authorized 🚫')
+    }
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect(`/albums`)
+  })
+}
+
+function deleteAlbum(req, res) {
+  Album.findById(req.params.id)
+  .then(album => {
+    if (album.owner.equals(req.user.profile._id)) {
+      album.delete()
+      .then(()=> {
+        res.redirect(`/albums/${album._id}`)
+      })
+    } else {
+      throw new Error('🚫 Not authorized 🚫')
+    }
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect(`/albums`)
+  })
+}
 
 export {
   index,
   newAlbum as new,
   create,
   show,
+  edit,
+  update,
+  deleteAlbum as delete
 }
