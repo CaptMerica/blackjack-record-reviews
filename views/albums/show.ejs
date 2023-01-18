@@ -4,14 +4,18 @@
 <main>
   <div>
   <%= album.name %>
-  <% if (album.owner.equals(user?.profile._id)) { %>
-    <a href="/album/<%= album._id %>/edit">
-      <button class="btn">Edit this Review</button>
-    </a>
-    <form action="/albums/<%= album._id %>?_method=DELETE" method="POST">
-      <button class="btn" type="submit">Delete Review💀</button>
-    </form>
-  <% } %>
+  <section>
+    <% if (user) { %>
+      <form>
+        <a href="/albums/<%= album._id %>/edit">
+          <button class="btn">Edit Review 🚧</button>
+        </a>
+        <form action="/albums/<%= album._id %>?_method=DELETE" method="POST">
+          <button class="btn" type="submit">Delete Review</button>
+        </form>
+      </form>
+    <% } %>
+  </section>
   </div>
 </main>
 <%- include("../partials/footer") %>
