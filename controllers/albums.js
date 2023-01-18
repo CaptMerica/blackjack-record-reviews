@@ -11,6 +11,11 @@ Album.find ({})
 })
 }
 
+function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) return next()
+  res.redirect('/auth/google')
+}
+
 function newAlbum (req, res) {
   res.render("albums/new", {
     title: "Add an album Review",
@@ -18,6 +23,7 @@ function newAlbum (req, res) {
 }
 
 function create (req, res) {
+  req.body.owner = req.user.profile._id
   Album.create (req.body)
   .then (album => {
     res.redirect ("/albums")
@@ -31,6 +37,7 @@ function create (req, res) {
 
 function show (req, res) {
   Album.findById(req.params.albumid)
+  .populate("owner")
   .then (album => {
     res.render ("albums/show", {album, title: album.name})
   })
@@ -112,6 +119,7 @@ function addComment(req, res) {
 
 export {
   index,
+  isLoggedIn,
   newAlbum as new,
   create,
   show,
