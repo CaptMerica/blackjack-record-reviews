@@ -9,16 +9,24 @@ const reviewSchema = new Schema ({
   author: {type: Schema.Types.ObjectId, ref: "Profile"}
 })
 
+const commentSchema = new Schema({
+  content: String,
+  commenter: {type: Schema.Types.ObjectId, ref: "Profile"},
+})
+
 const albumSchema = new Schema({
   name: String,
   releaseYear: {type: Number, default: 2023},
   reviews: [reviewSchema],
+  comments: [commentSchema],
   owner: {type: Schema.Types.ObjectId, ref: "Profile"}
 }, {
   bestSong: String,
 }, {
   timestamps: true,
 })
+
+
 
 const Album = mongoose.model('Album', albumSchema)
 
