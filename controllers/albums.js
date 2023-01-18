@@ -90,6 +90,26 @@ function deleteAlbum(req, res) {
   })
 }
 
+function addComment(req, res) {
+  Album.findById(req.params.id)
+  .then(taco => {
+    req.body.commenter = req.user.profile._id
+    album.comments.push(req.body)
+    album.save()
+    .then(()=> {
+      res.redirect(`/albums/${album._id}`)
+    })
+    .catch(err => {
+      console.log(err)
+      res.redirect('/albums')
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/albums')
+  })
+}
+
 export {
   index,
   newAlbum as new,
@@ -97,5 +117,6 @@ export {
   show,
   edit,
   update,
-  deleteAlbum as delete
+  deleteAlbum as delete,
+  addComment
 }

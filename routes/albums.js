@@ -11,6 +11,7 @@ router.get("/:albumid", albumsCtrl.show)
 router.get("/:albumid/edit", albumsCtrl.edit)
 router.put("/:albumid", albumsCtrl.update)
 router.delete("/:albumid", albumsCtrl.delete)
+router.post("/:albumid/comments", albumsCtrl.addComment)
 
 export {
   router
