@@ -4,10 +4,11 @@ const Schema = mongoose.Schema
 
 const reviewSchema = new Schema ({
   content: String,
-  albumRating: {type: Number, min: 1, max: 5, default: 5}
-}, {
-  author: {type: Schema.Types.ObjectId, ref: "Profile"}
-})
+  albumRating: {type: Number, min: 1, max: 5, default: 5},
+
+  author: {type: Schema.Types.ObjectId, ref: "Profile"},
+
+}) 
 
 const commentSchema = new Schema({
   content: String,
@@ -19,7 +20,8 @@ const albumSchema = new Schema({
   releaseYear: {type: Number, default: 2023},
   reviews: [reviewSchema],
   comments: [commentSchema],
-  owner: {type: Schema.Types.ObjectId, ref: "Profile"}
+  owner: {type: Schema.Types.ObjectId, ref: "Profile"},
+  imageURL: String
 }, {
   bestSong: String,
 }, {

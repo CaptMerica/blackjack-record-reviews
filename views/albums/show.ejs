@@ -1,18 +1,19 @@
 <%- include('../partials/html-head') %>
-<link rel="stylesheet" href="/stylesheets/albums/new.css" />
+<link rel="stylesheet" href="/stylesheets/albums/show.css" />
 <%- include('../partials/nav') %>
 <main>
   <div>
   <h1><%= album.name %></h1>
+  <img src=" <%= album.imageURL %>" alt="album_img" id="album-img">
   <section>
     <% if (user) { %>
-      <form>
+    
         <% if (album.owner?.equals(user?.profile._id)) { %> 
         <a href="/albums/<%= album._id %>/edit">
           <button class="btn">Edit Review</button>
         </a>
         <form action="/albums/<%= album._id %>?_method=DELETE" method="POST">
-          <button class="btn" type="submit">Delete Review</button>
+          <button class="btn" type="submit">Delete Album</button>
         </form>
         <% } %> 
       </form>
@@ -22,7 +23,7 @@
         <ul>
           <% album.comments?.forEach(comment => { %>
             <li>
-              <%= comment.content %> - <%= comment.commenter.name %>
+              <%= comment.content %> - <%= comment.commenter.name %> - 
             </li> 
           <% }) %>
         </ul>

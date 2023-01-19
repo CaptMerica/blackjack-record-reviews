@@ -56,7 +56,7 @@ function show (req, res) {
 function edit (req, res) {
   Album.findById(req.params.id)
   .then(album => {
-    res.render("albums/show", {
+    res.render("albums/edit", {
       album,
       title: "edit review"
     })
@@ -91,7 +91,7 @@ function deleteAlbum(req, res) {
     if (album.owner.equals(req.user.profile._id)) {
       album.delete()
       .then(()=> {
-        res.redirect(`/albums}`)
+        res.redirect(`/albums`)
       })
     } else {
       throw new Error('🚫 Not authorized 🚫')
@@ -105,7 +105,7 @@ function deleteAlbum(req, res) {
 
 function addComment(req, res) {
   Album.findById(req.params.id)
-  .then(taco => {
+  .then(album => {
     req.body.commenter = req.user.profile._id
     album.comments.push(req.body)
     album.save()

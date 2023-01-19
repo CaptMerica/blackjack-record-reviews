@@ -54,3 +54,8 @@ section div:nth-child(even) {
   grid-column: 2 / 3;
   margin-bottom: 24px;
 }
+
+#album-img {
+  max-height: 200px;
+
+}
