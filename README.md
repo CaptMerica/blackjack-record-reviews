@@ -1,9 +1,11 @@
 # This is Blacjack Record Reviews!
 
-![](images/BRR.png)
+![A music reviews app](images/BRR.png)
 
 
 ## [Click here to start the app!](https://blackjackrecordreviews.fly.dev/)
+
+## 
 
 ## Technologies used 💾
 ![JavaScript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
@@ -14,11 +16,11 @@
 
 ![Github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)
 
-Node
+![NodeJS](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
 
-Express
+![Express](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
 
-MongoDB
+![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
 
 Mongoose
 
@@ -38,12 +40,14 @@ Mongoose
 
 - Add an image url to upload album artwork for the review.
 
-- Add and delete comments on a review.
+- Includes Google OAuth.
 
 ## Ice Box 🧊
 
 [] - Include link to a song correspondent to the album review. 
 
+[] - Include a 5 star rating system to an album review.
 
+[X]- Add comments on a review
 
-
+[] - Delete comments on a review
