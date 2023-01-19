@@ -1,8 +1,9 @@
 <%- include('./partials/html-head') %>
+<link rel="stylesheet" href="/stylesheets/albums/index.css">
 <%- include('./partials/nav') %>
 
 <main>
-  <h1>hello, <%= user ? user.profile.name : "friend" %></h1>
+  <h1>hello, <%= user ? user.profile.name : "friend" %> ! Welcome to Blackjack Record Reviews!  Share how you feel about your favorite album with us.</h1>
   <% if (user?.profile.avatar) { %>
     <div>
       <img
@@ -10,6 +11,8 @@
         alt="<%= user.profile.name %> avatar"
       />
     </div>
+
+
   <% } %>
 
   
