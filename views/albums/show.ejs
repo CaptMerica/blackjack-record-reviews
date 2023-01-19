@@ -20,19 +20,25 @@
       <h2>Comments</h2>
       <% if (user) { %>
         <h3>Add a comment</h3>
-        <ul>
+        <form 
+        action="/albums/<%= album._id %>/comments" method="POST">
+        <textarea name="content"></textarea><br>
+        <button>Add Comment</button>
+      </form>
           <% album.comments?.forEach(comment => { %>
-            <li>
-              <%= comment.content %> - <%= comment.commenter.name %> - 
-            </li> 
+            <%= comment.content %> - <%= comment.commenter.name %> 
+              <% if (comment.commenter.equals(user?.profile._id)) { %>
+                <!-- <a href="/albums/<%= album._id %>/comments/<%= comment._id %>/edit">  
+                  <button class="btn">Edit Comment</button>
+              </a> -->
+              <form 
+              action="/albums/<%= album._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST" class="inline">
+              <button class="btn" type="submit">Delete Comment</button>
+            </form>
+              <% } %>
           <% }) %>
-        </ul>
-        <form action="/albums/<%= album._id %>/comments" method="POST">
-          <textarea name="content"></textarea><br>
-          <button>Add Comment</button>
-        </form>
-      <% } %>
-    <% } %>
+      <%  } %>
+    <% } %> 
   </section>
   </div>
 </main>

@@ -123,6 +123,74 @@ function addComment(req, res) {
   })
 }
 
+function editComment (req, res) {
+  Album.findById(req.params.albumId)
+  .then(album => {
+    const comment = album.comments.id(req.params.commentId)
+    if (comment.commenter.equals(req.user.profile._id)) {
+      res.render('albums/editComment', {
+        album, 
+        comment,
+        title: 'Update Comment'
+      })
+    } else {
+      throw new Error('🚫 Not authorized 🚫')
+    }
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/albums')
+  })
+}
+
+function updateComment(req, res) {
+  Album.findById(req.params.albumId)
+  .then(album => {
+    const comment = album.comments.id(req.params.commentId)
+    if (comment.commenter.equals(req.user.profile._id)) {
+      comment.set(req.body)
+      album.save()
+      .then(() => {
+        res.redirect(`/albums/${album._id}`)
+      })
+      .catch(err => {
+        console.log(err)
+        res.redirect('/albums')
+      })
+    } else {
+      throw new Error('🚫 Not authorized 🚫')
+    }
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/albums')
+  })
+}
+
+function deleteComment(req, res) {
+  Album.findById(req.params.id)
+  .then(album => {
+    const comment = album.comments.id(req.params.commentId)
+    if (comment.commenter.equals(req.user.profile._id)) {
+      album.comments.remove(comment)
+      album.save()
+      .then(() => {
+        res.redirect(`/albums/${album._id}`)
+      })
+      .catch(err => {
+        console.log(err)
+        res.redirect('/albums')
+      })
+    } else {
+      throw new Error('🚫 Not authorized 🚫')
+    }
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/albums')
+  })
+}
+
 export {
   index,
   isLoggedIn,
@@ -132,5 +200,8 @@ export {
   edit,
   update,
   deleteAlbum as delete,
-  addComment
+  addComment,
+  editComment,
+  updateComment,
+  deleteComment
 }

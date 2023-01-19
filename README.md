@@ -1,4 +1,4 @@
-# This is Blacjack Record Reviews!
+# Blacjack Record Reviews
 
 ![A music reviews app](public/images/BRR.png)
 
