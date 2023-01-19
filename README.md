@@ -1,11 +1,11 @@
 # This is Blacjack Record Reviews!
 
-![A music reviews app](images/BRR.png)
+![A music reviews app](public/images/BRR.png)
 
 
 ## [Click here to start the app!](https://blackjackrecordreviews.fly.dev/)
 
-## 
+## [Trello Board] (https://trello.com/b/sjy84xAB/blackjack-record-reviews) 
 
 ## Technologies used 💾
 ![JavaScript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
