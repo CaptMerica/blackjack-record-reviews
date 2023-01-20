@@ -1,4 +1,4 @@
-# Blacjack Record Reviews
+# Blackjack Record Reviews
 
 ![A music reviews app](public/images/BRR.png)
 
