@@ -2,6 +2,7 @@
 
 ![A music reviews app](public/images/BRR.png)
 
+This is an album review app where you can share what your favorite album is! Click the "Add Review" button to upload the title, release year, and the artwork for the album of you choice. Below these boxes are a bigger box where you can share your thoughts for everyone to see.  Click the Upload Review below when you have everything ready to share. You can view your review by clicking the "All Albums" button. Once in your review page, you can change the name of the review entirely or delete the review all together.  Other accounts may be able to leave comments on your review and delete them as well.  Have fun!
 
 ## [Click here to start the app!](https://blackjackrecordreviews.fly.dev/)
 

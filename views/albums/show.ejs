@@ -23,7 +23,7 @@
         <form 
         action="/albums/<%= album._id %>/comments" method="POST">
         <textarea name="content"></textarea><br>
-        <button>Add Comment</button>
+        <button id="add-comment">Add Comment</button>
       </form>
           <% album.comments?.forEach(comment => { %>
             <%= comment.content %> - <%= comment.commenter.name %> 

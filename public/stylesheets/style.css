@@ -80,6 +80,18 @@ section {
   padding: 50px;
 }
 
+button {
+  color: whitesmoke;
+  background-color: maroon;
+  border-radius: 4px;
+  padding: 1px;
+  text-decoration: none;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 #add-review {
   color: whitesmoke;
   background-color: maroon;
@@ -94,9 +106,20 @@ section {
   padding: 1px;
 }
 
-pre {
-  font-size: 14px;
+textarea {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
 }
+
+#add-comment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+
 
 nav > a {
   margin: 10px 30px;
@@ -107,12 +130,6 @@ nav > a {
   justify-content: center;
 }
 
-button {
-  color: whitesmoke;
-  background-color: maroon;
-  border-radius: 4px;
-  padding: 1px;
-}
 
 .link {
   padding: 10px 0;
