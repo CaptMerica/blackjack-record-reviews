@@ -37,12 +37,27 @@ main {
   flex-direction: column;
 }
 
+#album-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
 h1 {
   font-size: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  padding: 120px;
 }
 
 h2 {
   font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 h3 {
@@ -65,8 +80,18 @@ section {
   padding: 50px;
 }
 
-a {
-  color: #00B7FF;
+#add-review {
+  color: whitesmoke;
+  background-color: maroon;
+  border-radius: 4px;
+  padding: 1px;
+}
+
+#all-albums {
+  color: whitesmoke;
+  background-color: maroon;
+  border-radius: 4px;
+  padding: 1px;
 }
 
 pre {
@@ -82,8 +107,11 @@ nav > a {
   justify-content: center;
 }
 
-.btn {
-  margin: 16px 0;
+button {
+  color: whitesmoke;
+  background-color: maroon;
+  border-radius: 4px;
+  padding: 1px;
 }
 
 .link {

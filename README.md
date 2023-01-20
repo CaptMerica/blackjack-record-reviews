@@ -42,12 +42,12 @@ Mongoose
 
 - Includes Google OAuth.
 
+- Add or Delete comments on a review.
+
 ## Ice Box 🧊
 
 [] - Include link to a song correspondent to the album review. 
 
 [] - Include a 5 star rating system to an album review.
 
-[X]- Add comments on a review
 
-[] - Delete comments on a review

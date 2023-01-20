@@ -124,7 +124,7 @@ function addComment(req, res) {
 }
 
 function editComment (req, res) {
-  Album.findById(req.params.albumId)
+  Album.findById(req.params.id)
   .then(album => {
     const comment = album.comments.id(req.params.commentId)
     if (comment.commenter.equals(req.user.profile._id)) {
@@ -144,7 +144,7 @@ function editComment (req, res) {
 }
 
 function updateComment(req, res) {
-  Album.findById(req.params.albumId)
+  Album.findById(req.params.id)
   .then(album => {
     const comment = album.comments.id(req.params.commentId)
     if (comment.commenter.equals(req.user.profile._id)) {
