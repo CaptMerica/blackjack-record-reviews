@@ -15,6 +15,37 @@
         autocomplete="off"
       >
     </label>
+    <label>
+      Release Year:
+      <input 
+      type="text"
+      name="release-year-input"
+      value="<%= album.releaseYear %> "
+      autocomplete="off"
+      >
+    </label>
+    <label>
+      Image:
+      <input 
+      type="url"
+      name="imageURL"
+      value="<%= album.imageURL %> "
+      autocomplete="off"
+      >
+    </label>
+    <label>
+      Review
+    </label>
+    <textarea
+
+    name="text-box"  
+    cols="30" 
+    rows="10"
+    value="<%= album.review %> "
+    autocomplete="off"
+    ></textarea>
+    
+
     
     <button type="submit">Finish</button>
   </form>
