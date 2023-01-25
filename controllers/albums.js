@@ -24,9 +24,14 @@ function newAlbum (req, res) {
 
 function create (req, res) {
   req.body.owner = req.user.profile._id
+  req.body.author = req.user.profile._id
   Album.create (req.body)
   .then (album => {
-    res.redirect ("/albums")
+    album.reviews.push(req.body)
+    album.save()
+    .then(()=>{
+      res.redirect ("/albums")
+    })
   })
   .catch (err => {
     console.log(err);
@@ -39,7 +44,8 @@ function show (req, res) {
   Album.findById(req.params.albumid)
   .populate([
     {path: "owner"},
-    {path: "comments.commenter"}
+    {path: "comments.commenter"},
+    {path: "reviews"}
   ])
   .then (album => {
     res.render ("albums/show", {

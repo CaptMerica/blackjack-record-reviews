@@ -4,7 +4,7 @@
 
 
 <main>
-  <h1>Edit the album</h1>
+  <h1>Edit Album</h1>
   <form action="/albums/<%= album._id %>?_method=PUT" method="POST">
     <label>
       Name: 
@@ -34,11 +34,10 @@
       >
     </label>
     <label>
-      Review
+      Review:
     </label>
     <textarea
-
-    name="text-box"  
+    name="content"  
     cols="30" 
     rows="10"
     value="<%= album.review %> "
