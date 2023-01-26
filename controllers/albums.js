@@ -62,24 +62,24 @@ function show (req, res) {
 function edit (req, res) {
   Album.findById(req.params.id)
   .then(album => {
-   const reviewDoc = album.reviews.id(req.params.reviewid)
-   {
+  const reviewDoc = album.reviews.id(req.params.reviewid)
       res.render("albums/edit", {
         album,
         review: reviewDoc,
         title: "edit review"
       })
-     
-  }})
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/albums')
+  })
 }
 
 function update(req, res) {
   Album.findById(req.params.albumid)
   .then(album => {
-const reviewDoc = album.reviews.id(req.params.reviewid)
-    if (reviewDoc.author.equals(req.user.profile._id)) 
-    console.log(author);
-    {
+  const reviewDoc = album.reviews.id(req.params.reviewid)
+    if (reviewDoc.author.equals(req.user.profile._id)) {
       reviewDoc.set(req.body)
       album.save()
     }
