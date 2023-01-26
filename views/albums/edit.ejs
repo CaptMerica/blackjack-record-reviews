@@ -4,7 +4,7 @@
 
 
 <main>
-  <h1>Edit Review</h1>
+  <h1>Edit Album</h1>
   <form action="/albums/<%= album._id %>?_method=PUT" method="POST">
     <label>
       Name: 
@@ -18,9 +18,9 @@
     <label>
       Release Year:
       <input 
-      type="text"
-      name="release-year-input"
-      value="<%= album.releaseYear %> "
+      type="number"
+      name="releaseYear"
+      value="<%= album.releaseYear %>"
       autocomplete="off"
       >
     </label>
@@ -34,24 +34,14 @@
       >
     </label>
     <label>
-      Rating:
+      Review:
       <input 
-      type="number"
-      name="albumRating"
-      value="<%= album.albumRating %> "
+      type="text"
+      name="review"
+      value="<%= album.review %> "
       autocomplete="off"
       >
     </label>
-    <label>
-      Review:
-    </label>
-    <textarea
-    name="content"  
-    cols="30" 
-    rows="10"
-    value="<%= album.review %> "
-    autocomplete="off"
-    ></textarea>
     
 
     

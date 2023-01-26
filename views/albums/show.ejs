@@ -5,14 +5,16 @@
   <div>
   <h1><%= album.name %></h1>
   <img src=" <%= album.imageURL %>" alt="album_img" id="album-img">
-  <p><%= album.reviews[0].content %> </p>
+  <label>Review:</label>
+  <p><%= album.review %> </p>
   <p><%= album.albumRating %> </p>
+  <p><%= album.releaseYear %> </p>
   <section>
     <% if (user) { %>
     
         <% if (album.owner?.equals(user?.profile._id)) { %> 
         <a href="/albums/<%= album._id %>/edit">
-          <button class="btn">Edit Review</button>
+          <button class="btn">Edit Album</button>
         </a>
         <form action="/albums/<%= album._id %>?_method=DELETE" method="POST">
           <button class="btn" type="submit">Delete Album</button>

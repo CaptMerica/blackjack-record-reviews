@@ -1,14 +1,13 @@
 import { Album } from "../models/album.js"
 
 function index (req, res) {
-Album.find ({})
-.then(albums => {
-  console.log("albums");
-  res.render("albums/index", {
-    albums,
-    title: "All Albums"
+  Album.find ({})
+  .then(albums => {
+    res.render("albums/index", {
+      albums,
+      title: "All Albums"
+    })
   })
-})
 }
 
 function isLoggedIn(req, res, next) {
@@ -24,14 +23,9 @@ function newAlbum (req, res) {
 
 function create (req, res) {
   req.body.owner = req.user.profile._id
-  req.body.author = req.user.profile._id
   Album.create (req.body)
   .then (album => {
-    album.reviews.push(req.body)
-    album.save()
-    .then(()=>{
-      res.redirect ("/albums")
-    })
+    res.redirect ("/albums")
   })
   .catch (err => {
     console.log(err);
@@ -41,11 +35,10 @@ function create (req, res) {
 
 
 function show (req, res) {
-  Album.findById(req.params.albumid)
+  Album.findById(req.params.albumId)
   .populate([
     {path: "owner"},
-    {path: "comments.commenter"},
-    {path: "reviews"}
+    {path: "comments.commenter"}
   ])
   .then (album => {
     res.render ("albums/show", {
@@ -59,15 +52,13 @@ function show (req, res) {
     })
 }
 
-function edit (req, res) {
-  Album.findById(req.params.id)
+function editAlbum (req, res) {
+  Album.findById(req.params.albumId)
   .then(album => {
-  const reviewDoc = album.reviews.id(req.params.reviewid)
-      res.render("albums/edit", {
-        album,
-        review: reviewDoc,
-        title: "edit review"
-      })
+    res.render("albums/edit", {
+      album,
+      title: "edit review"
+    })
   })
   .catch(err => {
     console.log(err)
@@ -76,16 +67,10 @@ function edit (req, res) {
 }
 
 function update(req, res) {
-  Album.findById(req.params.albumid)
+  Album.findById(req.params.albumId)
   .then(album => {
-  const reviewDoc = album.reviews.id(req.params.reviewid)
-    if (reviewDoc.author.equals(req.user.profile._id)) {
-      reviewDoc.set(req.body)
-      album.save()
-    }
     if (album.owner.equals(req.user.profile._id)) {
       album.updateOne(req.body)
-      album.save()
       .then(()=> {
         res.redirect(`/albums/${album._id}`)
       })
@@ -106,42 +91,6 @@ function deleteAlbum(req, res) {
       album.delete()
       .then(()=> {
         res.redirect(`/albums`)
-      })
-    } else {
-      throw new Error('🚫 Not authorized 🚫')
-    }
-  })
-  .catch(err => {
-    console.log(err)
-    res.redirect(`/albums`)
-  })
-}
-
-function editReview(req, res) {
-  Album.findById(req.params.albumid)
-  .then(album => {
-    const reviewDoc = album.reviews.id(req.params.reviewid)
-    if(reviewDoc.author.equals(req.user.profile._id)) {
-      res.render("albums/edit", {
-        album,
-        review: reviewDoc,
-        title: "edit review"
-      })
-    } else {
-      throw new Error('🚫 Not authorized 🚫')
-    }
-  })
-}
-
-function updateReview(req, res) {
-  Album.findById(req.params.albumid)
-  .then(album => {
-    const reviewDoc = album.reviews.id(req.params.reviewid)
-    if (reviewDoc.author.equals(req.user.profile._id)) {
-      reviewDoc.set(req.body)
-      album.save()
-      .then(()=> {
-        res.redirect(`/albums/${album._id}`)
       })
     } else {
       throw new Error('🚫 Not authorized 🚫')
@@ -248,11 +197,9 @@ export {
   newAlbum as new,
   create,
   show,
-  edit,
+  editAlbum,
   update,
   deleteAlbum as delete,
-  editReview,
-  updateReview,
   addComment,
   editComment,
   updateComment,
