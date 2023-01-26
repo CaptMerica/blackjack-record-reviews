@@ -6,7 +6,7 @@ This is an album review app where you can share what your favorite album is! Cli
 
 ## [Click here to start the app!](https://blackjackrecordreviews.fly.dev/)
 
-## [Trello] (https://trello.com/b/sjy84xAB/blackjack-record-reviews) 
+## [Trello](https://trello.com/b/sjy84xAB/blackjack-record-reviews) 
 
 ## Technologies used 💾
 ![JavaScript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
