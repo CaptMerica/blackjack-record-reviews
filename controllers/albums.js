@@ -62,22 +62,30 @@ function show (req, res) {
 function edit (req, res) {
   Album.findById(req.params.id)
   .then(album => {
-    res.render("albums/edit", {
-      album,
-      title: "edit review"
-    })
-  })
-  .catch (err => {
-    console.log(err);
-    res.redirect("/albums")
-  })
+   const reviewDoc = album.reviews.id(req.params.reviewid)
+   {
+      res.render("albums/edit", {
+        album,
+        review: reviewDoc,
+        title: "edit review"
+      })
+     
+  }})
 }
 
 function update(req, res) {
-  Album.findById(req.params.id)
+  Album.findById(req.params.albumid)
   .then(album => {
+const reviewDoc = album.reviews.id(req.params.reviewid)
+    if (reviewDoc.author.equals(req.user.profile._id)) 
+    console.log(author);
+    {
+      reviewDoc.set(req.body)
+      album.save()
+    }
     if (album.owner.equals(req.user.profile._id)) {
       album.updateOne(req.body)
+      album.save()
       .then(()=> {
         res.redirect(`/albums/${album._id}`)
       })
@@ -108,6 +116,43 @@ function deleteAlbum(req, res) {
     res.redirect(`/albums`)
   })
 }
+
+function editReview(req, res) {
+  Album.findById(req.params.albumid)
+  .then(album => {
+    const reviewDoc = album.reviews.id(req.params.reviewid)
+    if(reviewDoc.author.equals(req.user.profile._id)) {
+      res.render("albums/edit", {
+        album,
+        review: reviewDoc,
+        title: "edit review"
+      })
+    } else {
+      throw new Error('🚫 Not authorized 🚫')
+    }
+  })
+}
+
+function updateReview(req, res) {
+  Album.findById(req.params.albumid)
+  .then(album => {
+    const reviewDoc = album.reviews.id(req.params.reviewid)
+    if (reviewDoc.author.equals(req.user.profile._id)) {
+      reviewDoc.set(req.body)
+      album.save()
+      .then(()=> {
+        res.redirect(`/albums/${album._id}`)
+      })
+    } else {
+      throw new Error('🚫 Not authorized 🚫')
+    }
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect(`/albums`)
+  })
+}
+
 
 function addComment(req, res) {
   Album.findById(req.params.id)
@@ -206,6 +251,8 @@ export {
   edit,
   update,
   deleteAlbum as delete,
+  editReview,
+  updateReview,
   addComment,
   editComment,
   updateComment,

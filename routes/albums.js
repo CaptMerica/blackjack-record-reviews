@@ -11,6 +11,8 @@ router.get('/new', albumsCtrl.new)
 router.get("/:albumid", albumsCtrl.show)
 router.get("/:id/edit", isLoggedIn, albumsCtrl.edit)
 router.put("/:albumid", isLoggedIn, albumsCtrl.update)
+router.get("/:albumid/reviews/:reviewid/edit", isLoggedIn, albumsCtrl.editReview)
+router.put("/:id/reviews/:reviewid", isLoggedIn, albumsCtrl.updateReview)
 
 router.post("/:id/comments", isLoggedIn, albumsCtrl.addComment)
 router.get("/:id/comments/:commentId/edit", isLoggedIn, albumsCtrl.editComment)
